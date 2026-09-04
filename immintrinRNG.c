@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
 	char enterpressed[] = "\0";
 	char spam[] = "spam";
 	while (1) {
-		if ( fgets(input, sizeof(input), stdin ) != NULL ) {
+		if ( fgets(input, sizeof(input), stdin) != NULL ) {
 			input[strcspn(input, "\n")] = '\0';
 			if ( strcmp(input, enterpressed) == 0 ) {
 				print_results();
