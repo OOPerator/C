@@ -34,12 +34,12 @@ int main(int argc, char* argv[])
 	char enterpressed[] = "\0";
 	char spam[] = "spam";
 	while (1) {
-		if ( fgets(input, sizeof(input), stdin) != NULL ) {
+		if ( fgets(input, sizeof(input), stdin ) != NULL ) {
 			input[strcspn(input, "\n")] = '\0';
-			if ( strcmp(input, enterpressed) == 0 ) {
+			if ( strcmp(input, enterpressed ) == 0 ) {
 				print_results();
 			}
-			else if ( strcmp(input, spam) == 0 ) {
+			else if ( strcmp(input, spam ) == 0 ) {
 				for (int i = 0; i < 200; i++) {
 					printf("\n");
 					print_results();
