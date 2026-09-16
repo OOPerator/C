@@ -13,20 +13,20 @@ static int64_t rand64() {
 	return 0;
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
 	int OutputCount = 100000;
 	char input[10];
 	char yes[2] = "y";
 	char yesUpper[2] = "Y";
-	printf("Write RNG results to file? y/n\n");
+	printf("Write RNG results to text file in this directory? y/n\n");
 	if ( fgets(input, sizeof(input), stdin) != NULL ) {
 		input[strcspn(input, "\n")] = '\0';
 		if ( strcmp(input, yes) == 0 || strcmp(input, yesUpper) == 0 ) 
 		{
-			FILE* outfile = fopen("out.txt", "w");
+			FILE *outfile = fopen("out.txt", "w");
 			if (outfile == NULL) {
-				fprintf(stderr, "File error.\n");
+				fprintf(stderr, "File not found.\n");
 				return 1;
 			}
 			printf("Please wait......\n");
