@@ -8,7 +8,7 @@
 static int64_t rand64() {
 	uint64_t r64 = 0;
 	for (int i = 0; i < 100; ++i) {
-		if (_rdseed64_step(&r64)) return (int64_t)r64;
+		if ( _rdseed64_step(&r64) ) return (int64_t)r64;
 	}
 	return 0;
 }
@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 	char yes[2] = "y";
 	char yesUpper[2] = "Y";
 	printf("Write RNG results to file? y/n\n");
-	if (fgets(input, sizeof(input), stdin) != NULL) {
+	if ( fgets(input, sizeof(input), stdin) != NULL ) {
 		input[strcspn(input, "\n")] = '\0';
 		if ( strcmp(input, yes) == 0 || strcmp(input, yesUpper) == 0 ) 
 		{
