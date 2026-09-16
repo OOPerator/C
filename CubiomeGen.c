@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 					fprintf(outfile, "%" PRId64 "\n", rand64());
 				}
 			fclose(outfile);
-				printf("Operation completed.\n");
+		    printf("Operation completed.\n");
 		}
 		system("pause"); // I know don't say it.
 	}
