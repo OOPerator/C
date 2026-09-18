@@ -15,7 +15,7 @@ static int64_t rand64() {
 
 int main(int argc, char *argv[])
 {
-	int OutputCount = 100000;
+	int OutputCount = 5000000;
 	char input[10];
 	char yes[2] = "y";
 	char yesUpper[2] = "Y";
@@ -25,20 +25,21 @@ int main(int argc, char *argv[])
 		if ( strcmp(input, yes) == 0 || strcmp(input, yesUpper) == 0 ) 
 		{
 			FILE *outfile = fopen("out.txt", "w");
-			if (outfile == NULL) {
-				fprintf(stderr, "File not found.\n");
-				return 1;
-			}
+			if (outfile == NULL) return 1;
+			size_t buffSize = 64 * 1024 * 1024;
+			char *buffer = malloc(buffSize);
+			setvbuf(outfile, buffer, _IOFBF, buffSize);
+
 			printf("Please wait......\n");
 			for (int i = 0; i < OutputCount; ++i) {
 				fprintf(outfile, "%" PRId64 "\n", rand64());
 			}
+
 			fclose(outfile);
+			free(buffer);
 			printf("Operation completed.\n");
 		}
-		int exit = 0;
-		printf("Press any key to continue...");
-		exit = getchar();
+		system("pause");
 	}
 
 	return 0;
