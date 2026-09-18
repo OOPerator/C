@@ -15,7 +15,7 @@ static int64_t rand64() {
 
 int main(int argc, char *argv[])
 {
-	int OutputCount = 5000000;
+	int OutputCount = 5000000;   //1gb text file
 	char input[10];
 	char yes[2] = "y";
 	char yesUpper[2] = "Y";
