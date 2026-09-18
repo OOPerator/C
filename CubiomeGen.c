@@ -30,13 +30,15 @@ int main(int argc, char *argv[])
 				return 1;
 			}
 			printf("Please wait......\n");
-				for (int i = 0; i < OutputCount; ++i) {
-					fprintf(outfile, "%" PRId64 "\n", rand64());
-				}
+			for (int i = 0; i < OutputCount; ++i) {
+				fprintf(outfile, "%" PRId64 "\n", rand64());
+			}
 			fclose(outfile);
-		    printf("Operation completed.\n");
+			printf("Operation completed.\n");
 		}
-		system("pause"); // I know don't say it.
+		int exit = 0;
+		printf("Press any key to continue...");
+		exit = getchar();
 	}
 
 	return 0;
