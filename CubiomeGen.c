@@ -7,15 +7,15 @@
 
 static int64_t rand64() {
 	uint64_t r64 = 0;
-	for (int i = 0; i < 100; ++i) {
-		if ( _rdseed64_step(&r64) ) return (int64_t)r64;
+	for (int i = 0; i < 10; ++i) {
+		if ( _rdrand64_step(&r64) ) return (int64_t)r64;
 	}
 	return 0;
 }
 
 int main(int argc, char *argv[])
 {
-	int OutputCount = 5000000;   //1gb text file
+	int OutputCount = 50000000;
 	char input[10];
 	char yes[2] = "y";
 	char yesUpper[2] = "Y";
@@ -26,11 +26,10 @@ int main(int argc, char *argv[])
 		{
 			FILE *outfile = fopen("out.txt", "w");
 			if (outfile == NULL) return 1;
-			size_t buffSize = 64 * 1024 * 1024;
+			size_t buffSize = 128 * 1024 * 1024;
 			char *buffer = malloc(buffSize);
-			setvbuf(outfile, buffer, _IOFBF, buffSize);
-
 			printf("Please wait......\n");
+			setvbuf(outfile, buffer, _IOFBF, buffSize);
 			for (int i = 0; i < OutputCount; ++i) {
 				fprintf(outfile, "%" PRId64 "\n", rand64());
 			}
@@ -41,6 +40,5 @@ int main(int argc, char *argv[])
 		}
 		system("pause");
 	}
-
 	return 0;
 }
