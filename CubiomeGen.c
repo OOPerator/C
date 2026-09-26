@@ -20,30 +20,29 @@ int main(int argc, char *argv[])
 	int OutputCount = 100000000;
 	char input[10];
 	char yes[2] = "y";
-	char yesUpper[2] = "Y";
-	printf("Write RNG results to text file in this directory? y/n\n");
+	char yesbutloud[2] = "Y";
+	printf("Write RNG results to text file in this directory? out.txt y/n\n");
 	if ( fgets(input, sizeof(input), stdin) != NULL ) {
 		input[strcspn(input, "\n")] = '\0';
-		if ( strcmp(input, yes) == 0 || strcmp(input, yesUpper) == 0 ) 
+		if ( strcmp(input, yes) == 0 || strcmp(input, yesbutloud) == 0 ) 
 		{
 			clock_t start, end;
-			double time_elapsed;
+			float time_elapsed;
 			start = clock();
 			FILE *outfile = fopen("out.txt", "w");
 			if (outfile == NULL) return 1;
 			size_t buffSize = 64 * 1024 * 1024;
 			char *buffer = malloc(buffSize);
 			setvbuf(outfile, buffer, _IOFBF, buffSize);
-			printf("Please wait......\n");
+			printf("Please wait . . . . . .\n");
 			for (int i = 0; i < OutputCount; ++i) {
 				fprintf(outfile, "%" PRId64 "\n", rand64());
 			}
 			fclose(outfile);
 			free(buffer);
 			end = clock();
-			time_elapsed = ( (double)(end - start) ) / CLOCKS_PER_SEC;
-			printf("Completed in %.3f seconds.\n", time_elapsed);
-			printf("Operation completed.\n");
+			time_elapsed = ( (double) (end - start) ) / CLOCKS_PER_SEC;
+			printf("Operation completed in %.3f seconds.\n", time_elapsed);
 		}
 		system("pause");
 	}
