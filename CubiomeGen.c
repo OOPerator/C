@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 		if ( strcmp(input, yes) == 0 || strcmp(input, yesbutloud) == 0 ) 
 		{
 			clock_t start, end;
-			float time_elapsed;
+			double time_elapsed;
 			start = clock();
 			FILE *outfile = fopen("out.txt", "w");
 			if (outfile == NULL) return 1;
